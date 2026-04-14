@@ -6,47 +6,68 @@ import numpy as np
 # 1. إعدادات الصفحة
 st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="🦅", layout="centered")
 
-# 2. تنسيق اللغة العربية والألوان (CSS) - نسخة مبسطة ومنظمة
+# 2. تنسيق الهوية (إطار بني وذهبي، وتنسيق عربي كامل)
 st.markdown("""
     <style>
+    /* إطار الصفحة الكاملة بألوان البني والذهبي */
+    .stApp {
+        border: 15px solid #5d4037; /* بني غامق فخم */
+        border-image: linear-gradient(to bottom, #5d4037, #c5a059) 1; /* تدرج من البني للذهبي */
+        min-height: 100vh;
+        direction: rtl;
+        text-align: right;
+        background-color: #fafafa;
+    }
+    
     .main {
-        direction: rtl;
-        text-align: right;
+        padding: 40px;
     }
-    div[data-testid="stMarkdownContainer"] > p {
-        text-align: right;
-        direction: rtl;
+
+    /* تنسيق النصوص والعناوين باللون البني الداكن */
+    h1, h2, h3, p, label {
+        text-align: right !important;
+        direction: rtl !important;
+        color: #3e2723 !important;
     }
-    /* تنسيق أداة رفع الملفات */
+
+    /* إطار أداة رفع الصور باللون البني */
     div[data-testid="stFileUploader"] {
         direction: rtl;
         text-align: right;
-        border: 2px dashed #1e3a8a;
+        border: 3px solid #5d4037 !important; /* إطار بني سميك */
         border-radius: 15px;
-        padding: 10px;
+        background-color: #efebe9; /* خلفية بيج فاتحة جداً */
+        padding: 25px;
     }
-    /* تنسيق صندوق الإقرار ليكون واسعاً ويظهر النص كاملاً */
+    
+    div[data-testid="stFileUploader"] label {
+        text-align: right;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    /* تنسيق صندوق الإقرار العلمي (كبير وواضح جداً) */
     .disclaimer {
-        background-color: #fff3cd;
-        border-right: 8px solid #ffc107;
-        padding: 30px; /* زيادة المساحة الداخلية */
-        border-radius: 10px;
-        margin-top: 30px;
+        background-color: #fff3cd; /* اللون الأصفر الأصلي */
+        border-right: 10px solid #c5a059; /* حافة ذهبية عريضة */
+        padding: 40px; /* مساحة داخلية كبيرة جداً لضمان ظهور النص كاملاً */
+        border-radius: 15px;
+        margin-top: 40px;
         color: #856404;
-        font-size: 1.1em;
-        line-height: 1.8;
+        font-size: 1.2em; /* تكبير الخط */
+        line-height: 2; /* زيادة المسافة بين الأسطر */
         width: 100%;
         display: block;
         text-align: right;
         direction: rtl;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     </style>
     """, unsafe_allow_html=True)
 
 # 3. عرض الشعار في جهة اليمين (تأكدي من رفع logo.jpg)
 try:
-    col_empty1, col_logo, col_empty2 = st.columns([1, 1, 1])
+    col_logo, col_empty1, col_empty2 = st.columns([1, 1, 1])
     with col_logo:
         st.image("logo.jpg", use_container_width=True)
 except:
@@ -140,7 +161,7 @@ if uploaded_file is not None:
         else:
             st.warning("لم يتم التعرف على نوع الصقر بدقة، حاول مرة أخرى بصورة أوضح.")
 
-# 8. الإقرار العلمي (يظهر كاملاً وبوضوح)
+# 8. الإقرار العلمي (يظهر كاملاً وبوضوح فائق)
 st.markdown("""
 <div class="disclaimer">
     <strong>⚠️ تنبيه علمي:</strong>  

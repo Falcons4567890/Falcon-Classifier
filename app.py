@@ -6,56 +6,94 @@ import numpy as np
 # 1. إعدادات الصفحة
 st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="🦅", layout="centered")
 
-# 2. تنسيق اللغة العربية والألوان (CSS) المحدث
+# 2. تنسيق الهوية (إطار بني وبيج، زخارف تراثية، وتنسيق عربي كامل)
 st.markdown("""
     <style>
-    /* إطار الصفحة الكاملة بألوان البني والبيج */
+    /* إطار الصفحة الكاملة مع زخرفة تراثية */
     .stApp {
-        border: 12px solid #5d4037; /* بني غامق فخم */
-        border-image: linear-gradient(to bottom, #5d4037, #d7ccc8) 1; /* تدرج من البني للبيج */
+        border: 15px solid #5d4037;
+        background-image: 
+            radial-gradient(circle at 0 0, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px),
+            radial-gradient(circle at 100% 0, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px),
+            radial-gradient(circle at 100% 100%, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px),
+            radial-gradient(circle at 0 100%, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px);
+        background-size: 50px 50px;
+        background-repeat: no-repeat;
+        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
         min-height: 100vh;
         direction: rtl;
         text-align: right;
-        background-color: #fafafa; /* خلفية بيضاء مائلة للبيج الفاتح جداً */
+        background-color: #fafafa;
     }
     
+    /* شريط زخرفي علوي */
+    .stApp::before {
+        content: "۞ ═══════════════════════ ۞ ═══════════════════════ ۞";
+        display: block;
+        text-align: center;
+        color: #8d6e63;
+        font-size: 20px;
+        padding: 10px 0;
+        letter-spacing: 5px;
+    }
+
     .main {
-        padding: 40px;
+        padding: 20px 40px;
     }
 
     /* تنسيق النصوص والعناوين باللون البني */
     h1, h2, h3, p, label {
         text-align: right !important;
         direction: rtl !important;
-        color: #4e342e !important; /* بني داكن للنصوص */
+        color: #4e342e !important;
     }
 
     /* إطار أداة رفع الصور بلون بيج غامق */
     div[data-testid="stFileUploader"] {
+        direction: rtl;
+        text-align: right;
         border: 2px dashed #8d6e63 !important;
         border-radius: 15px;
-        background-color: #efebe9; /* خلفية بيج فاتحة للأداة */
+        background-color: #efebe9;
+        padding: 20px;
+    }
+    
+    div[data-testid="stFileUploader"] label {
+        text-align: right;
+        width: 100%;
     }
 
-    /* تنسيق صندوق الإقرار العلمي بألوان متناسقة */
+    /* إعادة صندوق الإقرار العلمي للون الأصفر والذهبي الأصلي */
     .disclaimer {
-        background-color: #fbe9e7; /* بيج مائل للدفء */
-        border-right: 8px solid #8d6e63; /* حافة بنية */
+        background-color: #fff3cd; /* اللون الأصفر الأصلي */
+        border-right: 8px solid #ffc107; /* الحافة الذهبية الأصلية */
         padding: 25px;
         border-radius: 10px;
         margin-top: 30px;
-        color: #4e342e;
+        color: #856404; /* لون النص البني المائل للذهبي */
         font-size: 1.1em;
         line-height: 1.8;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-align: right;
+        direction: rtl;
+        position: relative;
+    }
+    
+    /* زخرفة صغيرة داخل صندوق الإقرار */
+    .disclaimer::after {
+        content: "❃";
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        color: #ffc107;
+        font-size: 20px;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. عرض الشعار في جهة اليمين (تعديل الترتيب)
+# 3. عرض الشعار في جهة اليمين (تأكدي من رفع logo.jpg)
 try:
-    # نضع الشعار في العمود الأول (الذي سيمثل اليمين مع التنسيق العربي)
-    col_empty1, col_logo, col_empty2 = st.columns([1, 1, 1])
+    col_logo, col_empty1, col_empty2 = st.columns([1, 1, 1])
     with col_logo:
         st.image("logo.jpg", use_container_width=True)
 except:
@@ -76,23 +114,47 @@ model = load_model()
 falcon_info = {
     "Shaheen": {
         "title": "🦅 صقر الشاهين (Peregrine Falcon)",
-        "details": """الاسم العلمي: Falco peregrinus<br><br>الحالة: مهاجر جزئيًا، مع وجود سلالات مستوطنة<br><br>الموائل: السواحل والمرتفعات والبيئات المفتوحة<br><br>ميزة مميزة: أسرع كائن حي أثناء الانقضاض"""
+        "details": """الاسم العلمي: Falco peregrinus  
+  
+الحالة: مهاجر جزئيًا، مع وجود سلالات مستوطنة  
+  
+الموائل: السواحل والمرتفعات والبيئات المفتوحة  
+  
+ميزة مميزة: أسرع كائن حي أثناء الانقضاض"""
     },
     "Gyer": {
         "title": "🦅 صقر الجير (Gyrfalcon)",
-        "details": """الاسم العلمي: Falco rusticolus<br><br>الحالة: زائر شتوي نادر<br><br>الموائل: المناطق القطبية وشبه القطبية، السهول المفتوحة والتندرا<br><br>ميزة مميزة: أكبر أنواع الصقور وأقواها، يتميز بقوة الانقضاض وقدرته على الصيد في البيئات القاسية"""
+        "details": """الاسم العلمي: Falco rusticolus  
+  
+الحالة: زائر شتوي نادر  
+  
+الموائل: المناطق القطبية وشبه القطبية، السهول المفتوحة والتندرا  
+  
+ميزة مميزة: أكبر أنواع الصقور وأقواها، يتميز بقوة الانقضاض وقدرته على الصيد في البيئات القاسية"""
     },
     "Hur": {
         "title": "🦅 الصقر الحر (Saker Falcon)",
-        "details": """الاسم العلمي: Falco cherrug<br><br>الحالة: مهاجر شتوي<br><br>الموائل: السهول المفتوحة والبيئات الصحراوية<br><br>ميزة مميزة: رمز الصقارة التقليدية وقوة التحمل"""
+        "details": """الاسم العلمي: Falco cherrug  
+  
+الحالة: مهاجر شتوي  
+  
+الموائل: السهول المفتوحة والبيئات الصحراوية  
+  
+ميزة مميزة: رمز الصقارة التقليدية وقوة التحمل"""
     },
     "Wakri": {
         "title": "🦅 الصقر الوكري (Lanner Falcon)",
-        "details": """الاسم العلمي: Falco biarmicus<br><br>الحالة: مستوطن<br><br>الموائل: البيئات شبه الجافة والصخرية<br><br>ميزة مميزة: صياد مرن بأساليب مطاردة متنوعة"""
+        "details": """الاسم العلمي: Falco biarmicus  
+  
+الحالة: مستوطن  
+  
+الموائل: البيئات شبه الجافة والصخرية  
+  
+ميزة مميزة: صياد مرن بأساليب مطاردة متنوعة"""
     }
 }
 
-# 7. أداة رفع الصور (بدون نص مكرر)
+# 7. أداة رفع الصور
 uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
@@ -125,10 +187,11 @@ if uploaded_file is not None:
         else:
             st.warning("لم يتم التعرف على نوع الصقر بدقة، حاول مرة أخرى بصورة أوضح.")
 
-# 8. الإقرار العلمي (نسخة عربية مرتبة بالكامل)
+# 8. الإقرار العلمي
 st.markdown("""
 <div class="disclaimer">
-    <strong>⚠️ تنبيه علمي:</strong><br>
+    <strong>⚠️ تنبيه علمي:</strong>  
+
     هذا النموذج الذكي لا يزال تحت التحسين والتطوير، وقد يظهر تحيزاً لبعض أنواع الصقور بناءً على بيانات التدريب المتاحة. 
     لذا، يفضل دائماً الاستعانة بصقارين خبراء للتأكد من النتائج، وذلك لتعزيز وتأكيد دقة التصميم في المراحل القادمة.
 </div>

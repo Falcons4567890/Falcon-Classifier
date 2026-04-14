@@ -67,7 +67,7 @@ st.markdown("""
 
 # 3. عرض الشعار في جهة اليمين (تأكدي من رفع logo.jpg)
 try:
-    col_logo, col_empty1, col_empty2 = st.columns([1, 1, 1])
+    col_empty1, col_logo, col_empty2 = st.columns([1, 1, 1])
     with col_logo:
         st.image("logo.jpg", use_container_width=True)
 except:
@@ -161,28 +161,11 @@ if uploaded_file is not None:
         else:
             st.warning("لم يتم التعرف على نوع الصقر بدقة، حاول مرة أخرى بصورة أوضح.")
 
-# 8. الإقرار العلمي (يظهر كاملاً كجزء من الصفحة بدون أي تحريك)
-st.markdown("---") # خط فاصل أنيق
-st.markdown(f"""
-    <div style="
-        background-color: #fff3cd; 
-        border-right: 10px solid #c5a059; 
-        padding: 30px; 
-        border-radius: 15px; 
-        color: #856404; 
-        font-size: 1.2em; 
-        line-height: 1.8; 
-        text-align: right; 
-        direction: rtl;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        margin-bottom: 50px;
-    ">
-        <strong>⚠️ تنبيه علمي:</strong>  
+# 8. الإقرار العلمي (نسخة عربية مرتبة بالكامل)
+st.markdown("""
+<div class="disclaimer" style="text-align: right; direction: rtl;">
+    <strong>⚠️ تنبيه علمي:</strong>  
 
-        هذا النموذج الذكي لا يزال تحت التحسين والتطوير، وقد يظهر تحيزاً لبعض أنواع الصقور بناءً على بيانات التدريب المتاحة. 
-        لذا، يفضل دائماً الاستعانة بصقارين خبراء للتأكد من النتائج، وذلك لتعزيز وتأكيد دقة التصميم في المراحل القادمة.
-    </div>
-""", unsafe_allow_html=True)
     هذا النموذج الذكي لا يزال تحت التحسين والتطوير، وقد يظهر تحيزاً لبعض أنواع الصقور بناءً على بيانات التدريب المتاحة. 
     لذا، يفضل دائماً الاستعانة بصقارين خبراء للتأكد من النتائج، وذلك لتعزيز وتأكيد دقة التصميم في المراحل القادمة.
 </div>

@@ -46,7 +46,7 @@ st.markdown("""
 # 3. عرض الشعار في جهة اليمين (تعديل الترتيب)
 try:
     # نضع الشعار في العمود الأول (الذي سيمثل اليمين مع التنسيق العربي)
-    col_empty1, col_empty2, col_logo = st.columns([1, 1, 1])
+    col_empty1, col_logo, col_empty2 = st.columns([1, 1, 1])
     with col_logo:
         st.image("logo.jpg", use_container_width=True)
 except:

@@ -6,94 +6,47 @@ import numpy as np
 # 1. إعدادات الصفحة
 st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="🦅", layout="centered")
 
-# 2. تنسيق الهوية (إطار بني وبيج، زخارف تراثية، وتنسيق عربي كامل)
+# 2. تنسيق اللغة العربية والألوان (CSS) - نسخة مبسطة ومنظمة
 st.markdown("""
     <style>
-    /* إطار الصفحة الكاملة مع زخرفة تراثية */
-    .stApp {
-        border: 15px solid #5d4037;
-        background-image: 
-            radial-gradient(circle at 0 0, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px),
-            radial-gradient(circle at 100% 0, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px),
-            radial-gradient(circle at 100% 100%, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px),
-            radial-gradient(circle at 0 100%, transparent 0, transparent 20px, #5d4037 21px, #5d4037 25px, transparent 26px);
-        background-size: 50px 50px;
-        background-repeat: no-repeat;
-        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-        min-height: 100vh;
+    .main {
         direction: rtl;
         text-align: right;
-        background-color: #fafafa;
     }
-    
-    /* شريط زخرفي علوي */
-    .stApp::before {
-        content: "۞ ═══════════════════════ ۞ ═══════════════════════ ۞";
-        display: block;
-        text-align: center;
-        color: #8d6e63;
-        font-size: 20px;
-        padding: 10px 0;
-        letter-spacing: 5px;
+    div[data-testid="stMarkdownContainer"] > p {
+        text-align: right;
+        direction: rtl;
     }
-
-    .main {
-        padding: 20px 40px;
-    }
-
-    /* تنسيق النصوص والعناوين باللون البني */
-    h1, h2, h3, p, label {
-        text-align: right !important;
-        direction: rtl !important;
-        color: #4e342e !important;
-    }
-
-    /* إطار أداة رفع الصور بلون بيج غامق */
+    /* تنسيق أداة رفع الملفات */
     div[data-testid="stFileUploader"] {
         direction: rtl;
         text-align: right;
-        border: 2px dashed #8d6e63 !important;
+        border: 2px dashed #1e3a8a;
         border-radius: 15px;
-        background-color: #efebe9;
-        padding: 20px;
+        padding: 10px;
     }
-    
-    div[data-testid="stFileUploader"] label {
-        text-align: right;
-        width: 100%;
-    }
-
-    /* إعادة صندوق الإقرار العلمي للون الأصفر والذهبي الأصلي */
+    /* تنسيق صندوق الإقرار ليكون واسعاً ويظهر النص كاملاً */
     .disclaimer {
-        background-color: #fff3cd; /* اللون الأصفر الأصلي */
-        border-right: 8px solid #ffc107; /* الحافة الذهبية الأصلية */
-        padding: 25px;
+        background-color: #fff3cd;
+        border-right: 8px solid #ffc107;
+        padding: 30px; /* زيادة المساحة الداخلية */
         border-radius: 10px;
         margin-top: 30px;
-        color: #856404; /* لون النص البني المائل للذهبي */
+        color: #856404;
         font-size: 1.1em;
         line-height: 1.8;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        width: 100%;
+        display: block;
         text-align: right;
         direction: rtl;
-        position: relative;
-    }
-    
-    /* زخرفة صغيرة داخل صندوق الإقرار */
-    .disclaimer::after {
-        content: "❃";
-        position: absolute;
-        bottom: 5px;
-        left: 10px;
-        color: #ffc107;
-        font-size: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     </style>
     """, unsafe_allow_html=True)
 
 # 3. عرض الشعار في جهة اليمين (تأكدي من رفع logo.jpg)
 try:
-    col_logo, col_empty1, col_empty2 = st.columns([1, 1, 1])
+    col_empty1, col_logo, col_empty2 = st.columns([1, 1, 1])
     with col_logo:
         st.image("logo.jpg", use_container_width=True)
 except:
@@ -187,7 +140,7 @@ if uploaded_file is not None:
         else:
             st.warning("لم يتم التعرف على نوع الصقر بدقة، حاول مرة أخرى بصورة أوضح.")
 
-# 8. الإقرار العلمي
+# 8. الإقرار العلمي (يظهر كاملاً وبوضوح)
 st.markdown("""
 <div class="disclaimer">
     <strong>⚠️ تنبيه علمي:</strong>  

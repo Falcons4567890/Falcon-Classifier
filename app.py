@@ -17,6 +17,15 @@ st.markdown("""
         text-align: right;
         direction: rtl;
     }
+    /* تنسيق أداة رفع الملفات لتكون من اليمين */
+    div[data-testid="stFileUploader"] {
+        direction: rtl;
+        text-align: right;
+    }
+    div[data-testid="stFileUploader"] label {
+        text-align: right;
+        width: 100%;
+    }
     </style>
     """, unsafe_allow_html=True)
 

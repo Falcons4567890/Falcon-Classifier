@@ -3,6 +3,9 @@ from ultralytics import YOLO
 from PIL import Image
 import numpy as np
 
+
+st.image("logo.jpg", width=150) # يمكنكِ تغيير الرقم 150 لتكبير أو تصغير الشعار
+
 # إعدادات الصفحة
 st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="🦅", layout="centered")
 

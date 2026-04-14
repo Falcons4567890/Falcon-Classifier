@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 # 1. إعدادات الصفحة
-st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="🦅", layout="centered")
+st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="", layout="centered")
 
 # 2. تنسيق الهوية (إطار بني وذهبي، وتنسيق عربي كامل)
 st.markdown("""
@@ -87,7 +87,7 @@ model = load_model()
 # 6. قاعدة بيانات المعلومات
 falcon_info = {
     "Shaheen": {
-        "title": "🦅 صقر الشاهين (Peregrine Falcon)",
+        "title": " صقر الشاهين (Peregrine Falcon)",
         "details": """الاسم العلمي: Falco peregrinus  
   
 الحالة: مهاجر جزئيًا، مع وجود سلالات مستوطنة  
@@ -97,7 +97,7 @@ falcon_info = {
 ميزة مميزة: أسرع كائن حي أثناء الانقضاض"""
     },
     "Gyer": {
-        "title": "🦅 صقر الجير (Gyrfalcon)",
+        "title": " صقر الجير (Gyrfalcon)",
         "details": """الاسم العلمي: Falco rusticolus  
   
 الحالة: زائر شتوي نادر  
@@ -107,7 +107,7 @@ falcon_info = {
 ميزة مميزة: أكبر أنواع الصقور وأقواها، يتميز بقوة الانقضاض وقدرته على الصيد في البيئات القاسية"""
     },
     "Hur": {
-        "title": "🦅 الصقر الحر (Saker Falcon)",
+        "title": " الصقر الحر (Saker Falcon)",
         "details": """الاسم العلمي: Falco cherrug  
   
 الحالة: مهاجر شتوي  
@@ -117,7 +117,7 @@ falcon_info = {
 ميزة مميزة: رمز الصقارة التقليدية وقوة التحمل"""
     },
     "Wakri": {
-        "title": "🦅 الصقر الوكري (Lanner Falcon)",
+        "title": " الصقر الوكري (Lanner Falcon)",
         "details": """الاسم العلمي: Falco biarmicus  
   
 الحالة: مستوطن  

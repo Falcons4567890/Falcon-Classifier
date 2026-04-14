@@ -9,36 +9,45 @@ st.set_page_config(page_title="نظام التعرف على الصقور", page_
 # 2. تنسيق اللغة العربية والألوان (CSS) المحدث
 st.markdown("""
     <style>
+    /* إطار الصفحة الكاملة بألوان البني والبيج */
+    .stApp {
+        border: 12px solid #5d4037; /* بني غامق فخم */
+        border-image: linear-gradient(to bottom, #5d4037, #d7ccc8) 1; /* تدرج من البني للبيج */
+        min-height: 100vh;
+        direction: rtl;
+        text-align: right;
+        background-color: #fafafa; /* خلفية بيضاء مائلة للبيج الفاتح جداً */
+    }
+    
     .main {
-        direction: rtl;
-        text-align: right;
+        padding: 40px;
     }
-    div[data-testid="stMarkdownContainer"] > p {
-        text-align: right;
-        direction: rtl;
+
+    /* تنسيق النصوص والعناوين باللون البني */
+    h1, h2, h3, p, label {
+        text-align: right !important;
+        direction: rtl !important;
+        color: #4e342e !important; /* بني داكن للنصوص */
     }
-    /* تنسيق أداة رفع الملفات */
+
+    /* إطار أداة رفع الصور بلون بيج غامق */
     div[data-testid="stFileUploader"] {
-        direction: rtl;
-        text-align: right;
-        border: 2px dashed #1e3a8a;
+        border: 2px dashed #8d6e63 !important;
         border-radius: 15px;
-        padding: 10px;
+        background-color: #efebe9; /* خلفية بيج فاتحة للأداة */
     }
-    /* تنسيق صندوق الإقرار ليكون أكبر ويظهر النص كاملاً */
+
+    /* تنسيق صندوق الإقرار العلمي بألوان متناسقة */
     .disclaimer {
-        background-color: #fff3cd;
-        border-right: 5px solid #ffc107;
+        background-color: #fbe9e7; /* بيج مائل للدفء */
+        border-right: 8px solid #8d6e63; /* حافة بنية */
         padding: 25px;
         border-radius: 10px;
         margin-top: 30px;
-        color: #856404;
+        color: #4e342e;
         font-size: 1.1em;
         line-height: 1.8;
-        width: 100%;
-        display: block;
-        text-align: right;
-        direction: rtl;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     </style>
     """, unsafe_allow_html=True)

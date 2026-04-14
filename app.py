@@ -83,7 +83,7 @@ falcon_info = {
 st.markdown('<h1 style="text-align: right; direction: rtl;">نظام التعرف الذكي على الصقور 🦅</h1>', unsafe_allow_html=True)
 st.write("ارفع صورة الصقر أو قم بلصقها هنا للحصول على التحليل والمعلومات فوراً.")
 
-uploaded_file = st.file_uploader("اختر صورة...", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)

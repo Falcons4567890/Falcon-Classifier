@@ -1,3 +1,6 @@
+import os
+os.system("pip install opencv-python-headless") # تثبيت النسخة الصحيحة برمجياً فور تشغيل التطبيق
+
 import streamlit as st
 from ultralytics import YOLO
 from PIL import Image

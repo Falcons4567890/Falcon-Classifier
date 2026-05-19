@@ -1,5 +1,5 @@
 import os
-os.system("pip install opencv-python-headless") # تثبيت النسخة الصحيحة برمجياً فور تشغيل التطبيق
+os.system("pip install opencv-python-headless") 
 
 import streamlit as st
 from ultralytics import YOLO
@@ -9,7 +9,7 @@ import numpy as np
 # 1. إعدادات الصفحة
 st.set_page_config(page_title="نظام التعرف على الصقور", page_icon="", layout="centered")
 
-# 2. تنسيق الهوية (إطار بني وذهبي، وتنسيق عربي كامل)
+# 2. تنسيق الهوية 
 st.markdown("""
     <style>
     /* إطار الصفحة الكاملة بألوان البني والذهبي */
@@ -49,7 +49,7 @@ st.markdown("""
         font-weight: bold;
     }
 
-    /* تنسيق صندوق الإقرار العلمي (كبير وواضح جداً) */
+    /* تنسيق صندوق الإقرار العلمي  */
     .disclaimer {
         background-color: #fff3cd; /* اللون الأصفر الأصلي */
         border-right: 10px solid #c5a059; /* حافة ذهبية عريضة */
@@ -68,7 +68,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 3. عرض الشعار في جهة اليمين (تأكدي من رفع logo.jpg)
+# 3. عرض الشعار في جهة اليمين
 try:
     col_empty1, col_logo, col_empty2 = st.columns([1, 1, 1])
     with col_logo:
